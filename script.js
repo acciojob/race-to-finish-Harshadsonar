@@ -14,11 +14,4 @@ for (let i = 0; i < 5; i++) {
   promises.push(promise);
 }
 
-Promise.any(promises)
-  .then((result) => {
-    const outputDiv = document.getElementById('output');
-    outputDiv.textContent = result;
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+window.promises = promises;

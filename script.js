@@ -14,8 +14,12 @@ for(let i=0; i<5; i++){
 
 	Promise.any(promises)
 	.then((result) => {
-		co
+		const outputDiv = document.getElementById('output');
+		outputDiv.textContent = result;
 	})
+	.catch((error) => {
+		console.error(error);
+	});
 }
 
 // Do not change the code above this

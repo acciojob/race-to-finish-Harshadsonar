@@ -1,23 +1,34 @@
-window.promises = [];
+let a = new Promise(resolve => {
+	setTimeout(() => {
+		resolve("a");
+	}, 2000)
+})
+let b = new Promise(resolve => {
+	setTimeout(() => {
+		resolve("b");
+	}, 3000)
+})
+let c = new Promise(resolve => {
+	setTimeout(() => {
+		resolve("c");
+	}, 1000)
+})
+let d = new Promise(resolve => {
+	setTimeout(() => {
+		resolve("d");
+	}, 4000)
+})
+let e = new Promise(resolve => {
+	setTimeout(() => {
+		resolve("e");
+	}, 5000)
+})
 
-function getRandomTime() {
-  return Math.floor(Math.random() * 5) + 1;
-}
+let x = Promise.any{[a, b, c, d, e]}
 
-const promises = Array.from({ length: 5 }, () => {
-  return new Promise((resolve) => {
-    const time = getRandomTime();
-    setTimeout(() => {
-      resolve(time);
-    }, time * 1000);
-  });
-});
+window.promises = [a, b, c, d, e];
 
-Promise.any(promises)
-  .then((result) => {
-    const outputDiv = document.getElementById("output");
-    outputDiv.innerText = `The first promise to resolve had a value of ${result}.`;
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+x.then((data) => {
+	const element = document.getElementById("output");
+	element.innerText = data;
+})
